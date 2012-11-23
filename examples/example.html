@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery Radio Toggle Samples</title>
+		<link rel="stylesheet" href="../jquery.radio-toggle.dark.css" />
+		<link rel="stylesheet" href="../jquery.radio-toggle.light.css" />
+		
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				width: 100%;
+				height: 100%;
+				background-color: whiteSmoke;
+
+				font-size: 16px;
+				font-family: 'Helvetica', 'Arial', sans-serif;
+			}
+
+			h1 {
+				text-align: center;
+				font-size: 2em;
+				margin: 0 auto;
+				margin-top: 50px;
+			}
+
+			.wrapper {
+				width: 960px;
+				margin: 20px auto;
+
+				border-radius: 10px;
+				border: 1px solid #DADADA;
+				background-color: white;
+				padding: 20px;
+			}
+
+			.container {
+				border-bottom: 1px solid #DADADA;
+				padding: 20px 0;
+			}
+
+			.title {
+				font-size: 1em;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+
+			textarea {
+				width: 940px;
+				padding: 10px;
+				resize: none;
+			}
+
+			.radioToggle {
+				margin-top: 20px;
+			}
+
+			ul {
+				padding: 10px 0;
+				padding-left: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>jQuery Radio Toggle Examples</h1>
+		<div class="wrapper">
+			<div class="container">
+				<span class="title">Default behavior</span>
+				<p class="description">The script transforms radio buttons into toggle buttons.</p>
+				<div id="gender">
+					<input type="radio" name="gender" value="M" data-display="Male" checked="checked" />
+					<input type="radio" name="gender" value="F" data-display="Female" />
+					<input type="radio" name="gender" value="U" data-display="Undisclosed" />
+					<input type="radio" name="gender" value="A" data-display="Alien" disabled="disabled" />
+				</div>
+			</div>
+			
+			<div class="container">
+				<span class="title">Specifying a callback</span>
+				<p class="description">To add a callback on button click, pass in a function to the buttonClick option during initialization.</p>
+				
+				<h5>HTML</h5>
+				<textarea class="html" rows="4" wrap="off"><div id="update">
+	<input type="radio" name="update" value="delete" data-display="Delete" checked="checked" />
+	<input type="radio" name="update" value="cascade" data-display="Cascade" />
+</div></textarea>
+
+				<h5>JavaScript</h5>
+				<textarea class="js" rows="9" wrap="off">$('#update').radioToggle({
+	buttonClick: function(button, radio) {
+		button.fadeOut(100, function() {
+			button.fadeIn(100, function() {
+				alert('Did you see that blink?');
+			});
+		});
+	}
+});</textarea>
+				<div id="update">
+					<input type="radio" name="update" value="delete" data-display="Delete" checked="checked" />
+					<input type="radio" name="update" value="cascade" data-display="Cascade" />
+				</div>
+			</div>
+			
+			<div class="container">
+				<span class="title">Specifying a theme</span>
+				<p class="description">To specify a theme, pass the 'theme' option during initialization. The theme will be added as a class on the container. To
+				create your own theme, just follow/modify the included CSS file. The following classes and styles are applied:
+					<ul>
+						<li>{ display: none } to all input elements</li>
+						<li>Class [containerClass] to the containers</li>
+						<li>Class [theme] to the containers ([containerClass].[theme])</li>
+						<li>Class [activeClass] to the active button</li>
+						<li>Class [inactiveClass] to the inactive buttons</li>
+						<li>Class [disabledClass] to the disabled buttons</li>
+						<li>Class 'first' to the first button</li>
+						<li>Class 'last' to the last button</li>
+					</ul>
+				</p>
+				
+				<h5>HTML</h5>
+				<textarea class="html" rows="8" wrap="off"><div id="social">
+	<input type="radio" name="social" value="FB" data-display="Facebook" checked="checked" />
+	<input type="radio" name="social" value="TW" data-display="Twitter" />
+	<input type="radio" name="social" value="IG" data-display="Instagram" />
+	<input type="radio" name="social" value="G+" data-display="Google+" />
+	<input type="radio" name="social" value="TU" data-display="Tumblr" />
+	<input type="radio" name="social" value="MY" data-display="MySpace" disabled="disabled" />
+</div></textarea>
+
+				<h5>JavaScript</h5>
+				<textarea class="js" rows="3" wrap="off">$('#social').radioToggle({
+	theme: 'light'
+});</textarea>
+
+				<h5>Resulting HTML</h5>
+				<textarea class="html" rows="14" wrap="off"><div id="social" class="radioToggle light">
+	<input type="radio" name="social" value="FB" data-display="Facebook" checked="checked" style="display: none;">
+	<input type="radio" name="social" value="TW" data-display="Twitter" style="display: none;">
+	<input type="radio" name="social" value="IG" data-display="Instagram" style="display: none;">
+	<input type="radio" name="social" value="G+" data-display="Google+" style="display: none;">
+	<input type="radio" name="social" value="TU" data-display="Tumblr" style="display: none;">
+	<input type="radio" name="social" value="MY" data-display="MySpace" disabled="disabled" style="display: none;">
+	<button data-value="FB" class="first active">Facebook</button>
+	<button data-value="TW" class="inactive">Twitter</button>
+	<button data-value="IG" class="inactive">Instagram</button>
+	<button data-value="G+" class="inactive">Google+</button>
+	<button data-value="TU" class="inactive">Tumblr</button>
+	<button data-value="MY" class="last disabled inactive" disabled="disabled">MySpace</button>
+</div></textarea>
+
+				<div id="social">
+					<input type="radio" name="social" value="FB" data-display="Facebook" checked="checked" />
+					<input type="radio" name="social" value="TW" data-display="Twitter" />
+					<input type="radio" name="social" value="IG" data-display="Instagram" />
+					<input type="radio" name="social" value="G+" data-display="Google+" />
+					<input type="radio" name="social" value="TU" data-display="Tumblr" />
+					<input type="radio" name="social" value="MY" data-display="MySpace" disabled="disabled" />
+				</div>
+			</div>
+		</div>	
+	
+		<!-- Scripts -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="../jquery.radio-toggle.js"></script>
+		<script type="text/javascript">
+		(function($) {
+			$('#gender').radioToggle();
+			$('#update').radioToggle({
+				buttonClick: function(button, radio) {
+					button.fadeOut(100, function() {
+						button.fadeIn(100, function() {
+							alert('Did you see that blink?');
+						});
+					});
+				}
+			});
+			$('#social').radioToggle({
+				theme: 'light'
+			});
+		})(jQuery);
+		</script>
+	</body>
+</html>

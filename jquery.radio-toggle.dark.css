@@ -1,0 +1,62 @@
+/* containerClass */
+.radioToggle {
+	padding: 2px 10px;
+	background-color: #000000;
+	border-radius: 10px;
+}
+
+.radioToggle button {
+	cursor: pointer;
+	border: none;
+	border-right: 1px solid #555555;
+	background-color: #000000;
+	color: #999999;
+	padding: 3px 10px;
+}
+
+/* activeClass - Applied to the 'selected' button */
+.radioToggle button.active {
+	color: #62DAFF;
+}
+
+/* inactiveClass - Applied to all 'unselected' buttons */
+.radioToggle button.inactive {
+	color: #999999;
+}
+
+/* disabledClass - Applied to disabled buttons */
+.radioToggle button.disabled {
+	text-decoration: line-through;
+	cursor: not-allowed;
+	color: #555555;
+}
+
+/* The 'first' className is automatically added to the first button */
+.radioToggle button.first {
+	/* Style the first button */
+}
+
+/* The 'last' className is automatically added to the last button */
+.radioToggle button.last {
+	/* Style the last button */
+	border-right: none;
+}
+
+
+/* cSS Pseudo-element styles */
+.radioToggle button.inactive:hover {
+	color: #CCCCCC;
+}
+
+.radioToggle button:active {
+	position: relative;
+	top: 1px;
+}
+
+.radioToggle button.disabled:active {
+	position: static;
+}
+
+.radioToggle button.disabled:hover {
+	color: #555555;
+}
